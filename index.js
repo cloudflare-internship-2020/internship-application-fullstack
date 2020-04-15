@@ -36,13 +36,15 @@ function getExpiryDate() {
  */
 async function handleRequest(request) {
   const cookies = request.headers.get('Cookie') || '';
-  if (cookies.includes('variant')) {
-    console.log('we got him');
-  }
   const resp = await fetch(URI);
   const respJson = await resp.json();
   const variants = respJson.variants;
-  const n = getRandomInt(0, variants.length);
+  let n = getRandomInt(0, variants.length);
+  if (cookies && cookies.includes(`variant=1`)) {
+    n = 0;
+  } else if (cookies && cookies.includes(`variant=2`)) {
+    n = 1;
+  }
   const variantResp = await fetch(variants[n]);
   const editedResp = new HTMLRewriter()
     .on('a#url', new LinkHandler())
@@ -52,7 +54,7 @@ async function handleRequest(request) {
     .transform(variantResp);
   editedResp.headers.append(
     'Set-Cookie',
-    `variant=${variants[n]};expires=${getExpiryDate()}; path=/`
+    `variant=${n + 1};expires=${getExpiryDate()}; path=/`
   );
   return editedResp;
 }
