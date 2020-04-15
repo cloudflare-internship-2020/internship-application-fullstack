@@ -22,11 +22,23 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+function getExpiryDate() {
+  const now = new Date();
+  const time = now.getTime();
+  var expireTime = time + 1000 * 36000;
+  now.setTime(expireTime);
+  return now.toUTCString();
+}
+
 /**
  * Returns a request to one of the two URI variants at random
  * @param {Request} request
  */
 async function handleRequest(request) {
+  const cookies = request.headers.get('Cookie') || '';
+  if (cookies.includes('variant')) {
+    console.log('we got him');
+  }
   const resp = await fetch(URI);
   const respJson = await resp.json();
   const variants = respJson.variants;
@@ -38,5 +50,9 @@ async function handleRequest(request) {
     .on('h1#title', new HeaderHandler(n + 1))
     .on('p#description', new ParagraphHandler(n + 1))
     .transform(variantResp);
+  editedResp.headers.append(
+    'Set-Cookie',
+    `variant=${variants[n]};expires=${getExpiryDate()}; path=/`
+  );
   return editedResp;
 }
