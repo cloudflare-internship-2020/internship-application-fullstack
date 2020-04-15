@@ -15,6 +15,7 @@ addEventListener('fetch', event => {
  * the max (exclusive)
  * @param {number} min
  * @param {number} max
+ * @returns {number}
  */
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -22,6 +23,10 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+/**
+ * Returns a UTC date as a string for the expiration time of a cookie
+ * @returns {string}
+ */
 function getExpiryDate() {
   const now = new Date();
   const time = now.getTime();

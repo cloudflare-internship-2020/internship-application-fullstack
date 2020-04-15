@@ -13,7 +13,7 @@ class LinkHandler {
 }
 
 /**
- * Class to handle editing titles
+ * Class to handle editing <title> elements
  */
 class TitleHandler {
   /**
@@ -36,7 +36,7 @@ class TitleHandler {
 }
 
 /**
- * Class to handle editing headers
+ * Class to handle editing <h1> elements with id 'title'
  */
 class HeaderHandler {
   /**
@@ -58,7 +58,7 @@ class HeaderHandler {
 }
 
 /**
- * Class to handle editing paragraphs
+ * Class to handle editing <p> elements with id 'description'
  */
 class ParagraphHandler {
   /**
