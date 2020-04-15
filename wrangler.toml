@@ -1,5 +1,5 @@
 name = "cloudflare-internship-dev"
-type = "javascript"
+type = "webpack"
 account_id = "583a96465836f65b14b5dd637a829357"
 workers_dev = true
 route = ""
