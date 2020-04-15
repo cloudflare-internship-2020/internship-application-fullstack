@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "An implementation of the Cloudflare Full Stack Internship Challenge 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'"
+  },
+  "author": "Jamie Lau <hello@jamielau.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
