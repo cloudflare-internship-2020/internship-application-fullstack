@@ -1,6 +1,6 @@
-name = "{{project-name}}"
+name = "{{sgdevcloudflare}}"
 type = "javascript"
-account_id = ""
+account_id = "0b6a328727cc1071f7bfcc6fe99d533d"
 workers_dev = true
 route = ""
 zone_id = ""
